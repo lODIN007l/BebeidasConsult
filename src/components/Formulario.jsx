@@ -8,7 +8,7 @@ const Formulario = () => {
   });
   const { categorias } = useCategorias();
   const [alerta, setAlerta] = useState("");
-  console.log(categorias);
+  // console.log(categorias);
 
   const handleSubmit = (e) => {
     e.preventDefault();
