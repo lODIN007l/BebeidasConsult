@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Form, Row, Col, Alert } from "react-bootstrap";
 import useCategorias from "../hooks/useCategorias";
+import useBebidas from "../hooks/useBebidas";
 const Formulario = () => {
   const [busqueda, setBusqueda] = useState({
     nombre: "",
@@ -8,6 +9,7 @@ const Formulario = () => {
   });
   const { categorias } = useCategorias();
   const [alerta, setAlerta] = useState("");
+  const { consultarBebidas } = useBebidas();
   // console.log(categorias);
 
   const handleSubmit = (e) => {
@@ -16,6 +18,7 @@ const Formulario = () => {
       setAlerta("Todos los campos son requeridos");
       return;
     }
+    consultarBebidas(busqueda);
   };
 
   return (
