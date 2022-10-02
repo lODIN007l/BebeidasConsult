@@ -6,9 +6,11 @@ const CategoriasProvider = ({ children }) => {
   const [categorias, setCategoria] = useState([]);
   const obtenerCategorias = async () => {
     try {
+      console.log("consultando");
       const url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
-      const { data } = await axios(url);
+      const { data } = await await axios(url);
       setCategoria(data.drinks);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

@@ -4,6 +4,9 @@ import axios from "axios";
 const BebidasContext = createContext();
 const BebidasProvider = ({ children }) => {
   const [bebidas, setBebidas] = useState([]);
+  const [modal, setModal] = useState(false);
+
+  //
   const consultarBebidas = async (datos) => {
     try {
       const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${datos.nombre}&c=${datos.categoria}`;
@@ -14,8 +17,14 @@ const BebidasProvider = ({ children }) => {
     }
   };
 
+  const handlModalClick = () => {
+    setModal(!modal);
+  };
+
   return (
-    <BebidasContext.Provider value={{ consultarBebidas, bebidas }}>
+    <BebidasContext.Provider
+      value={{ consultarBebidas, bebidas, handlModalClick, modal }}
+    >
       {children}
     </BebidasContext.Provider>
   );
